@@ -11,7 +11,14 @@ namespace FlipNLearnX_SCL
 		{
 			InitializeComponent();
 
-			MainPage = new MainPage();
+            // The root page of your application
+            var np = new MainPage();
+            NavigationPage.SetHasNavigationBar(np, false);
+            NavigationPage mp = new NavigationPage(np);
+            MainPage = mp;
+
+            // Original root from default project
+            //MainPage = new MainPage();
 		}
 
 		protected override void OnStart ()

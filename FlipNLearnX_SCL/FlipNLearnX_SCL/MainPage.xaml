@@ -2,13 +2,139 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:FlipNLearnX_SCL"
-             x:Class="FlipNLearnX_SCL.MainPage">
+             x:Class="FlipNLearnX_SCL.MainPage"
+             BindingContext="{StaticResource ViewModel}">
 
-    <StackLayout>
-        <!-- Place new controls here -->
-    	<Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
-    </StackLayout>
+    <Grid RowSpacing="1" ColumnSpacing="3">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="7*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
 
+        <!-- Sets Pane -->
+        <Grid Grid.Column="0" Grid.Row="0" BackgroundColor="#FF1D1D1D">
+            <StackLayout  VerticalOptions="FillAndExpand" Spacing="0">
+
+                <!-- Sets ListView -->
+                <ListView x:Name="ListViewSets" ItemsSource="{Binding Sets}" ItemTapped="Set_Tapped">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.View>
+                                    <StackLayout BackgroundColor="{Binding Color}">
+                                        <Label Text="{Binding Name}" TextColor="White" FontAttributes="Bold" FontSize="20" LineBreakMode="TailTruncation" HorizontalTextAlignment="Center"/>
+                                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="0,-4,0,0">
+                                            <Label Text="{Binding Decks.Count}" FontSize="Small" TextColor="White"/>
+                                            <Label Text="Decks" FontSize="Small" TextColor="White"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <!-- Add Set Button -->
+                <Button Text="+" TextColor="LightGray" FontSize="30" BackgroundColor="#2A2A2A" BorderWidth="1" BorderColor="Black" BorderRadius="0" HeightRequest="50" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Clicked="Button_AddSet_Tapped" />
+            </StackLayout>
+        </Grid>
+
+        <!-- Decks Pane -->
+        <Grid Grid.Column="1" Grid.Row="0" BackgroundColor="#000000">
+
+            <!-- Decks ListView-->
+            <ListView x:Name="ListViewDecks" ItemsSource="{Binding SelectedSet.Decks}" RowHeight="225" ItemTapped="Deck_Tapped">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <StackLayout VerticalOptions="FillAndExpand">
+                                    <Label Text="{Binding Name}" TextColor="White" FontAttributes="Bold" FontSize="20" HorizontalTextAlignment="Start"/>
+                                    <StackLayout BackgroundColor="White" Padding="1,1,1,1" VerticalOptions="FillAndExpand">
+                                        <Frame CornerRadius="0" Padding="0,0,0,0" VerticalOptions="FillAndExpand">
+                                            <StackLayout BackgroundColor="{Binding Cards[0].Color}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                                <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                                                    <Label Text="{Binding Cards[0].FrontText}" TextColor="White" FontSize="18" HeightRequest="150" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </Frame>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="End" Margin="0,0,0,5">
+                                        <!--<Label Text="35" TextColor="LightGray" FontSize="14"/>
+                                        <Label Text="% recall as of" TextColor="LightGray" FontSize="14"/>
+                                        <Label Text="2" TextColor="LightGray" FontSize="14"/>
+                                        <Label Text="days" TextColor="LightGray" FontSize="14"/>
+                                        <Label Text="ago" TextColor="LightGray" FontSize="14" HorizontalOptions="StartAndExpand"/>-->
+                                        <StackLayout Orientation="Horizontal" HorizontalOptions="End">
+                                            <Label Text="{Binding Cards.Count}" FontSize="14" TextColor="LightGray"/>
+                                            <Label Text="Cards" FontSize="14" TextColor="LightGray" Margin="0,0,0,5"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </StackLayout>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <!-- Add Deck Button -->
+            <StackLayout HorizontalOptions="End" VerticalOptions="End" Margin="0,0,10,20">
+                <Button Text="+" TextColor="LightGray" FontSize="30" BackgroundColor="#2A2A2A" HeightRequest="70" WidthRequest="70" BorderColor="LightGray" BorderWidth="1" BorderRadius="50" Clicked="Button_AddDeck_Tapped" />
+            </StackLayout>
+        </Grid>
+
+        <!-- Appbar Pane -->
+        <Grid Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" BackgroundColor="#000000">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Spacing="0">
+
+                <!-- Profile Button -->
+                <Grid HorizontalOptions="FillAndExpand">
+                    <StackLayout Orientation="Vertical" BackgroundColor="#2A2A2A">
+                        <Image Source="FlipNLearn_IconTest.png" HorizontalOptions="Center" Margin="0,5,0,0" />
+                        <Label Text="PROFILE" TextColor="LightGray" Font="Roboto" VerticalOptions="End" HorizontalTextAlignment="Center"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Vertical">
+                        <Button BackgroundColor="Transparent" BorderRadius="0" HeightRequest="60" HorizontalOptions="FillAndExpand" Clicked="Button_AddSet_Tapped" />
+                    </StackLayout>
+                </Grid>
+
+                <!-- Sort Button -->
+                <Grid HorizontalOptions="FillAndExpand">
+                    <StackLayout Orientation="Vertical" BackgroundColor="#2A2A2A">
+                        <Image Source="FlipNLearn_IconTest.png" HorizontalOptions="Center" Margin="0,5,0,0" />
+                        <Label Text="SORT" TextColor="LightGray" Font="Roboto" VerticalOptions="End" HorizontalTextAlignment="Center"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Vertical">
+                        <Button BackgroundColor="Transparent" BorderRadius="0" HeightRequest="60" HorizontalOptions="FillAndExpand" Clicked="Button_AddSet_Tapped" />
+                    </StackLayout>
+                </Grid>
+
+                <!-- Schedule Button -->
+                <Grid HorizontalOptions="FillAndExpand">
+                    <StackLayout Orientation="Vertical" BackgroundColor="#2A2A2A">
+                        <Image Source="FlipNLearn_IconTest.png" HorizontalOptions="Center" Margin="0,5,0,0" />
+                        <Label Text="SCHEDULE" TextColor="LightGray" Font="Roboto" VerticalOptions="End" HorizontalTextAlignment="Center"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Vertical">
+                        <Button BackgroundColor="Transparent" BorderRadius="0" HeightRequest="60" HorizontalOptions="FillAndExpand" Clicked="Button_AddSet_Tapped" />
+                    </StackLayout>
+                </Grid>
+
+                <!-- Settings Button -->
+                <Grid HorizontalOptions="FillAndExpand">
+                    <StackLayout Orientation="Vertical" BackgroundColor="#2A2A2A" >
+                        <Image Source="FlipNLearn_IconTest.png" HorizontalOptions="Center" Margin="0,5,0,0" />
+                        <Label Text="SETTINGS" TextColor="LightGray" Font="Roboto" VerticalOptions="End" HorizontalTextAlignment="Center"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Vertical">
+                        <Button BackgroundColor="Transparent" BorderRadius="0" HeightRequest="60" HorizontalOptions="FillAndExpand" Clicked="Button_Settings_Tapped" />
+                    </StackLayout>
+                </Grid>
+            </StackLayout>
+        </Grid>
+    </Grid>
 </ContentPage>
