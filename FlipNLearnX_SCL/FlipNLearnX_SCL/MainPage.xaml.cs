@@ -63,7 +63,7 @@ namespace FlipNLearnX_SCL
         async void Deck_Tapped(object sender, EventArgs e)
         {
             ViewModel.instance.SelectedDeck = (ListViewDecks.SelectedItem as Deck);
-            //await this.Navigation.PushAsync(new ViewDeck(), true);
+            await this.Navigation.PushAsync(new ViewDeck(), true);
         }
 
         async void Button_Settings_Tapped(object sender, EventArgs e)

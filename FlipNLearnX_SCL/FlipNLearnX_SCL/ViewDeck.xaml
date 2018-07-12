@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:c="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
+             x:Class="FlipNLearnX_SCL.ViewDeck"
+             NavigationPage.HasNavigationBar="True"
+             BindingContext="{StaticResource ViewModel}">
+
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout x:Name="header">
+                <Label Text="{Binding SelectedSet.Name}" FontSize="25" FontAttributes="Bold" HorizontalOptions="Start" LineBreakMode="NoWrap" />
+                <Label Text="{Binding SelectedDeck.Name}" FontSize="60" HorizontalOptions="Start" LineBreakMode="NoWrap" />
+            </StackLayout>
+            <StackLayout x:Name="cards">
+                <c:CarouselViewControl x:Name="CaruselViewCon" ItemsSource="{Binding SelectedDeck.Cards}" BackgroundColor="HotPink" HeightRequest="200">
+                    <c:CarouselViewControl.ItemTemplate>
+                        <DataTemplate>
+                            <Label Text="{Binding FrontText}" FontSize="25" TextColor="SeaGreen" />
+                        </DataTemplate>
+                    </c:CarouselViewControl.ItemTemplate>
+                </c:CarouselViewControl>
+            </StackLayout>
+            <StackLayout x:Name="footer">
+                <Label Text="TESTING" FontSize="Micro" TextColor="SeaGreen" />
+            </StackLayout>
+        </StackLayout>
+
+    </ContentPage.Content>
+
+</ContentPage>
