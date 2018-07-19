@@ -47,14 +47,14 @@
         <Grid Grid.Column="1" Grid.Row="0" BackgroundColor="#000000">
 
             <!-- Decks ListView-->
-            <ListView x:Name="ListViewDecks" ItemsSource="{Binding SelectedSet.Decks}" RowHeight="225" ItemTapped="Deck_Tapped">
+            <ListView x:Name="ListViewDecks" ItemsSource="{Binding SelectedSet.Decks}" RowHeight="230" ItemTapped="Deck_Tapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <ViewCell.View>
                                 <StackLayout VerticalOptions="FillAndExpand">
                                     <Label Text="{Binding Name}" TextColor="White" FontAttributes="Bold" FontSize="20" HorizontalTextAlignment="Start"/>
-                                    <StackLayout BackgroundColor="White" Padding="1,1,1,1" VerticalOptions="FillAndExpand">
+                                    <StackLayout BackgroundColor="White" Padding="1,1,1,1" HeightRequest="185" WidthRequest="230" VerticalOptions="FillAndExpand">
                                         <Frame CornerRadius="0" Padding="0,0,0,0" VerticalOptions="FillAndExpand">
                                             <StackLayout BackgroundColor="{Binding Cards[0].Color}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
                                                 <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
@@ -98,18 +98,7 @@
                         <Label Text="PROFILE" TextColor="LightGray" Font="Roboto" VerticalOptions="End" HorizontalTextAlignment="Center"/>
                     </StackLayout>
                     <StackLayout Orientation="Vertical">
-                        <Button BackgroundColor="Transparent" BorderRadius="0" HeightRequest="60" HorizontalOptions="FillAndExpand" Clicked="Button_AddSet_Tapped" />
-                    </StackLayout>
-                </Grid>
-
-                <!-- Sort Button -->
-                <Grid HorizontalOptions="FillAndExpand">
-                    <StackLayout Orientation="Vertical" BackgroundColor="#2A2A2A">
-                        <Image Source="FlipNLearn_IconTest.png" HorizontalOptions="Center" Margin="0,5,0,0" />
-                        <Label Text="SORT" TextColor="LightGray" Font="Roboto" VerticalOptions="End" HorizontalTextAlignment="Center"/>
-                    </StackLayout>
-                    <StackLayout Orientation="Vertical">
-                        <Button BackgroundColor="Transparent" BorderRadius="0" HeightRequest="60" HorizontalOptions="FillAndExpand" Clicked="Button_AddSet_Tapped" />
+                        <Button BackgroundColor="Transparent" BorderRadius="0" HeightRequest="60" HorizontalOptions="FillAndExpand" Clicked="Button_Profile_Tapped" />
                     </StackLayout>
                 </Grid>
 
@@ -120,7 +109,18 @@
                         <Label Text="SCHEDULE" TextColor="LightGray" Font="Roboto" VerticalOptions="End" HorizontalTextAlignment="Center"/>
                     </StackLayout>
                     <StackLayout Orientation="Vertical">
-                        <Button BackgroundColor="Transparent" BorderRadius="0" HeightRequest="60" HorizontalOptions="FillAndExpand" Clicked="Button_AddSet_Tapped" />
+                        <Button BackgroundColor="Transparent" BorderRadius="0" HeightRequest="60" HorizontalOptions="FillAndExpand" Clicked="Button_Schedule_Tapped" />
+                    </StackLayout>
+                </Grid>
+
+                <!-- Sort Button -->
+                <Grid HorizontalOptions="FillAndExpand">
+                    <StackLayout Orientation="Vertical" BackgroundColor="#2A2A2A">
+                        <Image Source="FlipNLearn_IconTest.png" HorizontalOptions="Center" Margin="0,5,0,0" />
+                        <Label Text="SORT" TextColor="LightGray" Font="Roboto" VerticalOptions="End" HorizontalTextAlignment="Center"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Vertical">
+                        <Button BackgroundColor="Transparent" BorderRadius="0" HeightRequest="60" HorizontalOptions="FillAndExpand" Clicked="Button_Sort_Tapped" />
                     </StackLayout>
                 </Grid>
 

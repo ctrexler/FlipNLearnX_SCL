@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FlipNLearnX_SCL.AddSetPoppup"
+             BindingContext="{StaticResource ViewModel}"
+             BackgroundColor="{StaticResource BackgroundColor}">
+
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+            <StackLayout>
+                <Label Text="create set" FontSize="50"  HorizontalOptions="Start" />
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Name:" FontSize="Medium" HorizontalOptions="FillAndExpand" />
+                    <Entry x:Name="setName" HorizontalOptions="FillAndExpand" WidthRequest="200" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Color:" FontSize="Medium" HorizontalOptions="FillAndExpand" />
+                    <Entry x:Name="setColor" Text="bleep bloop" HorizontalOptions="FillAndExpand" WidthRequest="200" />
+                </StackLayout>
+            </StackLayout>
+            <StackLayout>
+                <Button x:Name="createButton" Text="Submit" Clicked="createButton_Tapped" />
+                <Button x:Name="dismissButton" Text="Dismiss" Clicked="dismissButton_Tapped" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
