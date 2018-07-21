@@ -7,7 +7,7 @@
         <ResourceDictionary>
             <local:ViewModel x:Key="ViewModel" />
 
-            <Color x:Key="BackgroundColor">#33302E</Color>
+            <Color x:Key="BackgroundColor">#222</Color>
             <Color x:Key="TextColor">White</Color>
         </ResourceDictionary>
     </Application.Resources>

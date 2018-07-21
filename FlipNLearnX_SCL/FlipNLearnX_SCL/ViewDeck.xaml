@@ -22,7 +22,13 @@
                 </c:CarouselViewControl>
             </StackLayout>
             <StackLayout x:Name="footer">
-                <Label Text="TESTING" FontSize="Micro" TextColor="SeaGreen" />
+                <Label Text="{Binding SelectedDeck.CreationDate.DateTime}" FontSize="Medium" TextColor="SeaGreen" />
+                <Label Text="{Binding SelectedDeck.Name}" FontSize="Medium" TextColor="SeaGreen" />
+                <Label Text="{Binding SelectedDeck.Color.G}" FontSize="Medium" TextColor="SeaGreen" />
+                <Label Text="{Binding SelectedDeck.Description}" FontSize="Medium" TextColor="SeaGreen" />
+                <Label Text="{Binding SelectedDeck.Type}" FontSize="Medium" TextColor="SeaGreen" />
+                <Label Text="{Binding SelectedDeck.Mode}" FontSize="Medium" TextColor="SeaGreen" />
+                <Label Text="{Binding SelectedDeck.Cards.Count}" FontSize="Medium" TextColor="SeaGreen" />
             </StackLayout>
         </StackLayout>
 

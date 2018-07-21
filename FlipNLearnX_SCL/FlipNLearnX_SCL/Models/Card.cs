@@ -20,7 +20,7 @@ namespace FlipNLearnX_SCL.Models
             }
         }
 
-        public int Id { get; set; }
+        private Guid Id { get; set; } = Guid.NewGuid();
 
         // Color
         public Color _Color { get; set; }

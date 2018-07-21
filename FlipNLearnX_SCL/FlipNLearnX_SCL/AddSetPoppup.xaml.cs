@@ -43,7 +43,7 @@ namespace FlipNLearnX_SCL
             await Navigation.PopModalAsync();
         }
 
-        async private void dismissButton_Tapped(object sender, EventArgs e)
+        async private void cancelButton_Tapped(object sender, EventArgs e)
         {
             await Navigation.PopModalAsync();
         }

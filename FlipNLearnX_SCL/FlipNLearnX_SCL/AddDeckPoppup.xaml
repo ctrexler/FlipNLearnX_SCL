@@ -8,19 +8,19 @@
     <ContentPage.Content>
         <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
             <StackLayout>
-                <Label Text="create deck" FontSize="50"  HorizontalOptions="Start" />
+                <Label Text="create deck" TextColor="{StaticResource TextColor}" FontSize="50"  HorizontalOptions="Start" />
                 <StackLayout Orientation="Horizontal">
-                    <Label Text="Name:" FontSize="Medium" HorizontalOptions="FillAndExpand" />
+                    <Label Text="Name:" TextColor="{StaticResource TextColor}" FontSize="Medium" HorizontalOptions="FillAndExpand" />
                     <Entry x:Name="deckName" HorizontalOptions="FillAndExpand" WidthRequest="200" />
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
-                    <Label Text="Color:" FontSize="Medium" HorizontalOptions="FillAndExpand" />
+                    <Label Text="Color:" TextColor="{StaticResource TextColor}" FontSize="Medium" HorizontalOptions="FillAndExpand" />
                     <Entry x:Name="deckColor" Text="Aqua" HorizontalOptions="FillAndExpand" WidthRequest="200" />
                 </StackLayout>
             </StackLayout>
-            <StackLayout>
-                <Button x:Name="createButton" Text="Submit" Clicked="createButton_Tapped" />
-                <Button x:Name="dismissButton" Text="Dismiss" Clicked="dismissButton_Tapped" />
+            <StackLayout Orientation="Horizontal">
+                <Button x:Name="createButton" Text="Submit" TextColor="{StaticResource TextColor}" BorderColor="{StaticResource TextColor}" HorizontalOptions="FillAndExpand" Clicked="createButton_Tapped" />
+                <Button x:Name="dismissButton" Text="Dismiss" TextColor="{StaticResource TextColor}" BorderColor="{StaticResource TextColor}" HorizontalOptions="FillAndExpand" Clicked="dismissButton_Tapped" />
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

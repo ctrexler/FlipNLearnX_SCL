@@ -26,7 +26,7 @@ namespace FlipNLearnX_SCL
                 Name = deckName.Text,
                 Cards = new ObservableCollection<Card>() {
                     new Card() {
-                        Color = Color.Black,
+                        Color = ViewModel.instance.SelectedSet.Color,
                         FrontText="Card front",
                         BackText="Card back"
                     }
