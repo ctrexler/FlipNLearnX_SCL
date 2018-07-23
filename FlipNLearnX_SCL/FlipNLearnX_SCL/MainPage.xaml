@@ -2,9 +2,14 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:FlipNLearnX_SCL"
+             xmlns:converter="clr-namespace:FlipNLearnX_SCL.ValueConverters"
              x:Class="FlipNLearnX_SCL.MainPage"
              BindingContext="{StaticResource ViewModel}">
 
+    <Page.Resources>
+        <converter:CardAspectRatioConverter x:Key="CardAspectRatioConverter" />
+    </Page.Resources>
+    
     <Grid RowSpacing="1" ColumnSpacing="3">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*" />
@@ -47,22 +52,22 @@
         <Grid Grid.Column="1" Grid.Row="0" BackgroundColor="#000000">
 
             <!-- Decks ListView-->
-            <ListView x:Name="ListViewDecks" ItemsSource="{Binding SelectedSet.Decks}" RowHeight="230" ItemTapped="Deck_Tapped">
+            <ListView x:Name="ListViewDecks" ItemsSource="{Binding SelectedSet.Decks}" HasUnevenRows="True" ItemTapped="Deck_Tapped">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <ViewCell.View>
                                 <StackLayout VerticalOptions="FillAndExpand">
-                                    <Label Text="{Binding Name}" TextColor="White" FontAttributes="Bold" FontSize="20" HorizontalTextAlignment="Start"/>
-                                    <StackLayout BackgroundColor="White" Padding="1,1,1,1" HeightRequest="185" WidthRequest="230" VerticalOptions="FillAndExpand">
-                                        <Frame CornerRadius="0" Padding="0,0,0,0" VerticalOptions="FillAndExpand">
-                                            <StackLayout BackgroundColor="{Binding Cards[0].Color}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-                                                <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
-                                                    <Label Text="{Binding Cards[0].FrontText}" TextColor="White" FontSize="18" HeightRequest="150" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
-                                                </StackLayout>
-                                            </StackLayout>
+                                    <Label Text="{Binding Name}" TextColor="White" FontAttributes="Bold" FontSize="20" LineBreakMode="TailTruncation" HorizontalTextAlignment="Start"/>
+                                    <Grid x:Name="displayCard" BackgroundColor="White" Padding="1,1,1,1" HeightRequest="{Binding Source={x:Reference displayCard}, Path=Width, Converter={StaticResource CardAspectRatioConverter}}" VerticalOptions="FillAndExpand">
+                                        <Frame x:Name="cardFrame" CornerRadius="0" Padding="0,0,0,0" VerticalOptions="Fill">
+                                            <Grid BackgroundColor="{Binding Cards[0].Color}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                                <Grid VerticalOptions="Fill" HorizontalOptions="CenterAndExpand">
+                                                    <Label Text="{Binding Cards[0].FrontText}" TextColor="White" FontSize="18" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" VerticalOptions="CenterAndExpand" />
+                                                </Grid>
+                                            </Grid>
                                         </Frame>
-                                    </StackLayout>
+                                    </Grid>
                                     <StackLayout Orientation="Horizontal" HorizontalOptions="End" Margin="0,0,0,5">
                                         <!--<Label Text="35" TextColor="LightGray" FontSize="14"/>
                                         <Label Text="% recall as of" TextColor="LightGray" FontSize="14"/>

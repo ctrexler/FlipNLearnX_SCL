@@ -2,9 +2,14 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:c="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
+             xmlns:converter="clr-namespace:FlipNLearnX_SCL.ValueConverters"
              x:Class="FlipNLearnX_SCL.ViewDeck"
              NavigationPage.HasNavigationBar="True"
              BindingContext="{StaticResource ViewModel}">
+
+    <Page.Resources>
+        <converter:CardAspectRatioConverter x:Key="CardAspectRatioConverter" />
+    </Page.Resources>
 
     <ContentPage.Content>
         <StackLayout>
@@ -13,7 +18,7 @@
                 <Label Text="{Binding SelectedDeck.Name}" FontSize="60" HorizontalOptions="Start" LineBreakMode="NoWrap" />
             </StackLayout>
             <StackLayout x:Name="cards">
-                <c:CarouselViewControl x:Name="CaruselViewCon" ItemsSource="{Binding SelectedDeck.Cards}" BackgroundColor="HotPink" HeightRequest="200">
+                <c:CarouselViewControl x:Name="CarouselViewCon" ItemsSource="{Binding SelectedDeck.Cards}" BackgroundColor="HotPink" HeightRequest="{Binding Source={x:Reference cards}, Path=Width, Converter={StaticResource CardAspectRatioConverter}}">
                     <c:CarouselViewControl.ItemTemplate>
                         <DataTemplate>
                             <Label Text="{Binding FrontText}" FontSize="25" TextColor="SeaGreen" />
