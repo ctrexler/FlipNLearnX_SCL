@@ -23,7 +23,7 @@ namespace FlipNLearnX_SCL.Models
         private Guid Id { get; set; } = Guid.NewGuid();
 
         // Color
-        public Color _Color { get; set; }
+        private Color _Color { get; set; }
         public Color Color
         {
             get { return this._Color; }
@@ -38,7 +38,7 @@ namespace FlipNLearnX_SCL.Models
         }
 
         // FrontText
-        public string _FrontText { get; set; }
+        private string _FrontText { get; set; }
         public string FrontText
         {
             get { return this._FrontText; }
@@ -53,7 +53,7 @@ namespace FlipNLearnX_SCL.Models
         }
 
         // BackText
-        public string _BackText { get; set; }
+        private string _BackText { get; set; }
         public string BackText
         {
             get { return this._BackText; }

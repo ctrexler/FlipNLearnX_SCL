@@ -17,7 +17,7 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="60"/>
+            <RowDefinition Height="75"/>
         </Grid.RowDefinitions>
 
         <!-- Sets Pane -->
@@ -97,47 +97,47 @@
             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Spacing="0">
 
                 <!-- Profile Button -->
-                <Grid HorizontalOptions="FillAndExpand">
+                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
                     <StackLayout Orientation="Vertical" BackgroundColor="#2A2A2A">
                         <Image Source="FlipNLearn_IconTest.png" HorizontalOptions="Center" Margin="0,5,0,0" />
                         <Label Text="PROFILE" TextColor="LightGray" Font="Roboto" VerticalOptions="End" HorizontalTextAlignment="Center"/>
                     </StackLayout>
-                    <StackLayout Orientation="Vertical">
+                    <Grid VerticalOptions="FillAndExpand">
                         <Button BackgroundColor="Transparent" BorderRadius="0" HeightRequest="60" HorizontalOptions="FillAndExpand" Clicked="Button_Profile_Tapped" />
-                    </StackLayout>
+                    </Grid>
                 </Grid>
 
                 <!-- Schedule Button -->
-                <Grid HorizontalOptions="FillAndExpand">
+                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
                     <StackLayout Orientation="Vertical" BackgroundColor="#2A2A2A">
                         <Image Source="FlipNLearn_IconTest.png" HorizontalOptions="Center" Margin="0,5,0,0" />
                         <Label Text="SCHEDULE" TextColor="LightGray" Font="Roboto" VerticalOptions="End" HorizontalTextAlignment="Center"/>
                     </StackLayout>
-                    <StackLayout Orientation="Vertical">
+                    <Grid VerticalOptions="FillAndExpand">
                         <Button BackgroundColor="Transparent" BorderRadius="0" HeightRequest="60" HorizontalOptions="FillAndExpand" Clicked="Button_Schedule_Tapped" />
-                    </StackLayout>
+                    </Grid>
                 </Grid>
 
                 <!-- Sort Button -->
-                <Grid HorizontalOptions="FillAndExpand">
+                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
                     <StackLayout Orientation="Vertical" BackgroundColor="#2A2A2A">
                         <Image Source="FlipNLearn_IconTest.png" HorizontalOptions="Center" Margin="0,5,0,0" />
                         <Label Text="SORT" TextColor="LightGray" Font="Roboto" VerticalOptions="End" HorizontalTextAlignment="Center"/>
                     </StackLayout>
-                    <StackLayout Orientation="Vertical">
+                    <Grid VerticalOptions="FillAndExpand">
                         <Button BackgroundColor="Transparent" BorderRadius="0" HeightRequest="60" HorizontalOptions="FillAndExpand" Clicked="Button_Sort_Tapped" />
-                    </StackLayout>
+                    </Grid>
                 </Grid>
 
                 <!-- Settings Button -->
-                <Grid HorizontalOptions="FillAndExpand">
+                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
                     <StackLayout Orientation="Vertical" BackgroundColor="#2A2A2A" >
                         <Image Source="FlipNLearn_IconTest.png" HorizontalOptions="Center" Margin="0,5,0,0" />
                         <Label Text="SETTINGS" TextColor="LightGray" Font="Roboto" VerticalOptions="End" HorizontalTextAlignment="Center"/>
                     </StackLayout>
-                    <StackLayout Orientation="Vertical">
+                    <Grid VerticalOptions="FillAndExpand">
                         <Button BackgroundColor="Transparent" BorderRadius="0" HeightRequest="60" HorizontalOptions="FillAndExpand" Clicked="Button_Settings_Tapped" />
-                    </StackLayout>
+                    </Grid>
                 </Grid>
             </StackLayout>
         </Grid>

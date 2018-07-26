@@ -5,6 +5,7 @@
              xmlns:converter="clr-namespace:FlipNLearnX_SCL.ValueConverters"
              x:Class="FlipNLearnX_SCL.ViewDeck"
              NavigationPage.HasNavigationBar="True"
+             BackgroundColor="{StaticResource BackgroundColor}"
              BindingContext="{StaticResource ViewModel}">
 
     <Page.Resources>
@@ -14,27 +15,32 @@
     <ContentPage.Content>
         <StackLayout>
             <StackLayout x:Name="header">
-                <Label Text="{Binding SelectedSet.Name}" FontSize="25" FontAttributes="Bold" HorizontalOptions="Start" LineBreakMode="NoWrap" />
-                <Label Text="{Binding SelectedDeck.Name}" FontSize="60" HorizontalOptions="Start" LineBreakMode="NoWrap" />
+                <Label Text="{Binding SelectedSet.Name}" TextColor="{StaticResource TextColor}" FontSize="25" FontAttributes="Bold" HorizontalOptions="Start" LineBreakMode="NoWrap" />
+                <Label Text="{Binding SelectedDeck.Name}" TextColor="{StaticResource TextColor}" FontSize="60" HorizontalOptions="Start" LineBreakMode="NoWrap" />
             </StackLayout>
             <StackLayout x:Name="cards">
-                <c:CarouselViewControl x:Name="CarouselViewCon" ItemsSource="{Binding SelectedDeck.Cards}" BackgroundColor="HotPink" HeightRequest="{Binding Source={x:Reference cards}, Path=Width, Converter={StaticResource CardAspectRatioConverter}}">
+                <c:CarouselViewControl x:Name="CarouselViewCon" BindingContext="{Binding SelectedDeck}" ItemsSource="{Binding Cards}" HeightRequest="{Binding Source={x:Reference cards}, Path=Width, Converter={StaticResource CardAspectRatioConverter}}">
                     <c:CarouselViewControl.ItemTemplate>
                         <DataTemplate>
-                            <Label Text="{Binding FrontText}" FontSize="25" TextColor="SeaGreen" />
+                            <Grid BackgroundColor="White" Padding="1,1,1,1" VerticalOptions="FillAndExpand">
+                                <Frame x:Name="cardFrame" CornerRadius="0" Padding="0,0,0,0" VerticalOptions="Fill">
+                                    <Grid BackgroundColor="{Binding Color}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                        <Grid VerticalOptions="Fill" HorizontalOptions="CenterAndExpand">
+                                            <Label Text="{Binding FrontText}" TextColor="White" FontSize="30" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" VerticalOptions="CenterAndExpand" />
+                                        </Grid>
+                                    </Grid>
+                                </Frame>
+                            </Grid>
                         </DataTemplate>
                     </c:CarouselViewControl.ItemTemplate>
                 </c:CarouselViewControl>
             </StackLayout>
-            <StackLayout x:Name="footer">
-                <Label Text="{Binding SelectedDeck.CreationDate.DateTime}" FontSize="Medium" TextColor="SeaGreen" />
-                <Label Text="{Binding SelectedDeck.Name}" FontSize="Medium" TextColor="SeaGreen" />
-                <Label Text="{Binding SelectedDeck.Color.G}" FontSize="Medium" TextColor="SeaGreen" />
-                <Label Text="{Binding SelectedDeck.Description}" FontSize="Medium" TextColor="SeaGreen" />
-                <Label Text="{Binding SelectedDeck.Type}" FontSize="Medium" TextColor="SeaGreen" />
-                <Label Text="{Binding SelectedDeck.Mode}" FontSize="Medium" TextColor="SeaGreen" />
-                <Label Text="{Binding SelectedDeck.Cards.Count}" FontSize="Medium" TextColor="SeaGreen" />
-            </StackLayout>
+            <Grid x:Name="footer">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                    <Label Text="✔️" FontSize="175" TextColor="Green" />
+                    <Label Text="❌" FontSize="175" TextColor="Red" />
+                </StackLayout>
+            </Grid>
         </StackLayout>
 
     </ContentPage.Content>
